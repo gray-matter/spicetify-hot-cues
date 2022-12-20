@@ -1,5 +1,14 @@
 import * as Mousetrap from 'mousetrap';
-import {addOrGoToHotCue, countCues, getOrCreateCue, isValidCue, loadCues, removeHotCue, saveCues} from './cues-utils';
+import {
+  addOrGoToHotCue,
+  countCues,
+  getOrCreateCue,
+  isValidCue,
+  loadCues,
+  msToReadableTime,
+  removeHotCue,
+  saveCues
+} from './cues-utils';
 
 function warnNoSong() {
   Spicetify.showNotification("⛔️ No song currently playing");
@@ -22,7 +31,7 @@ function generateCuesButtons(cueColors: string[],
   for (let i = 0; i < 4; ++i) {
     cueButtons[i] = new Spicetify.Topbar.Button(
         "Cue #" + i,
-        generateButton(cueColors[i], false),
+        generateButton(cueColors[i], undefined),
         callback(i)
     );
   }
@@ -30,13 +39,28 @@ function generateCuesButtons(cueColors: string[],
   return cueButtons;
 }
 
-function updateCueState(cueButtons: Spicetify.Topbar.Button[], cueColors: string[],
-                        cueIndex: number, enabled: boolean): void {
-  cueButtons[cueIndex].icon = generateButton(cueColors[cueIndex], enabled);
+function updateCueState(cueButton: Spicetify.Topbar.Button, color: string, timecode: number): void {
+  cueButton.icon = generateButton(color, timecode);
 }
 
-function generateButton(color: string, enabled: boolean): string {
-  return `<svg viewBox="0 0 100 100"><circle cx=50 cy=50 r="50" fill="${color}" fill-opacity="${enabled ? 0.9 : 0.2}"/></svg>`
+function generateButton(color: string, timecode: number): string {
+  const validTimeCue = isValidCue(timecode);
+  let result = `
+    <svg viewBox="0 0 100 100">
+        <circle cx=50 cy=50 r="50" fill="${color}" fill-opacity="${validTimeCue ? 0.9 : 0.2}"/>`;
+
+  if (validTimeCue) {
+    result += `
+            <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
+                  font-size="x-large" font-weight="bold">
+                ${msToReadableTime(timecode)}
+            </text>`
+  }
+
+  result += `
+    </svg>`
+
+  return result;
 }
 
 function updateCurrentSong(allCues: SongCues): SongCue | undefined
@@ -61,11 +85,12 @@ function updateCurrentSong(allCues: SongCues): SongCue | undefined
 function updateCuesButtons(currentCues: SongCue,
                            cueButtons: Spicetify.Topbar.Button[], cueColors: string[]) {
   for (let i = 0; i < currentCues.cues.length; ++i) {
-    updateCueState(cueButtons, cueColors, i, isValidCue(currentCues.cues[i]));
+    updateCueState(cueButtons[i], cueColors[i],
+        isValidCue(currentCues.cues[i]) ? currentCues.cues[i] : undefined);
   }
 
   for (let i = currentCues.cues.length; i < cueColors.length; ++i) {
-    updateCueState(cueButtons, cueColors, i, false);
+    updateCueState(cueButtons[i], cueColors[i], undefined);
   }
 }
 
