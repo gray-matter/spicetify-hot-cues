@@ -6,8 +6,16 @@ Provides the hot cues feature for low-cost DJ'ing with Spotify.
 
 ### Adding & removing hot cues
 
-<kbd>N</kbd> to record hot cue N (eg. 1) when it doesn't exist, or skip to it when it does
-<kbd>Shit</kbd> + <kbd>N</kbd> to remove hot cue N
+### Keyboard
+* <kbd>N</kbd> to record hot cue N (eg. 1) when it doesn't exist, or skip to it when it does
+* <kbd>Shit</kbd> + <kbd>N</kbd> to remove hot cue N
+
+### Mouse
+There are 4 circles at the top of the Spotify player indiciating the
+current status of all cues (off = no cue, on = existing cue).
+
+* <kbd>Click</kbd> on cue N to record or go to cue
+* <kbd>Shift</kbd> + <kbd>Click</kbd> to remove hot cue N
 
 ## Limitations
 
