@@ -151,14 +151,14 @@ async function main() {
       }
     }
 
-    if (event.code == "Shift") {
+    if (event.key == "Shift") {
       shiftCurrentlyPushed = true;
       return;
     }
   });
 
-  window.addEventListener('keydown', (event) => {
-    if (event.code == "Shift") {
+  window.addEventListener('keyup', (event) => {
+    if (event.key == "Shift") {
       shiftCurrentlyPushed = false;
       return;
     }
