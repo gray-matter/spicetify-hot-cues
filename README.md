@@ -1,28 +1,30 @@
 # hot-cues
 
 This extension provides hot cues for low-cost DJ'ing with Spotify.
+Hot cues are persisted on your computer, meaning you will still have
+them handy even after closing Spotify! 🎉
 
 ## Hot cues?
 
 Hot cues are locations in a song that one can record to seek to.
 For instance, you might want to pinpoint the end of the song intro
 or a specific part of the track. With a press of a button, you may
-then jump right into it.
+then jump right into them. ⏩️
 
 ## Usage
 
 ### Adding & removing hot cues
 
-#### Keyboard
+#### Keyboard ⌨️
 * <kbd>N</kbd> will record hot cue N (eg. 1) when it doesn't exist, or skip to it when it does
 * <kbd>Shit</kbd> + <kbd>N</kbd> to remove hot cue N
 
-#### Mouse
+#### Mouse 🖱️
 
 * <kbd>Click</kbd> on cue N to record or go to cue
 * <kbd>Shift</kbd> + <kbd>Click</kbd> to remove hot cue N
 
-#### UI
+#### UI 🖥️
 
 ![Topbar preview](/assets/topbar.png?raw=true)
 
