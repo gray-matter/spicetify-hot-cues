@@ -11,6 +11,17 @@ then jump right into it.
 
 ## Usage
 
+### Adding & removing hot cues
+
+#### Keyboard
+* <kbd>N</kbd> will record hot cue N (eg. 1) when it doesn't exist, or skip to it when it does
+* <kbd>Shit</kbd> + <kbd>N</kbd> to remove hot cue N
+
+#### Mouse
+
+* <kbd>Click</kbd> on cue N to record or go to cue
+* <kbd>Shift</kbd> + <kbd>Click</kbd> to remove hot cue N
+
 #### UI
 
 ![Topbar preview](/assets/topbar.png?raw=true)
@@ -31,17 +42,6 @@ are any, otherwise nothing gets displayed.
 ![Cue recorded](/assets/seek.png?raw=true)
 
 You may then record cues, seek to them and delete them.
-
-### Adding & removing hot cues
-
-#### Keyboard
-* <kbd>N</kbd> will record hot cue N (eg. 1) when it doesn't exist, or skip to it when it does
-* <kbd>Shit</kbd> + <kbd>N</kbd> to remove hot cue N
-
-#### Mouse
-
-* <kbd>Click</kbd> on cue N to record or go to cue
-* <kbd>Shift</kbd> + <kbd>Click</kbd> to remove hot cue N
 
 ## Limitations
 
