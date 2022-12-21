@@ -1,18 +1,44 @@
 # hot-cues
 
-Provides the hot cues feature for low-cost DJ'ing with Spotify.
+This extension provides hot cues for low-cost DJ'ing with Spotify.
+
+## Hot cues?
+
+Hot cues are locations in a song that one can record to seek to.
+For instance, you might want to pinpoint the end of the song intro
+or a specific part of the track. With a press of a button, you may
+then jump right into it.
 
 ## Usage
 
+#### UI
+
+![Topbar preview](/assets/topbar.png?raw=true)
+
+There are 4 circles at the top of the Spotify player indicating the
+current status of all cues. When they're on, they display the
+timecode of the given cue
+
+![Cues loading](/assets/loading.png?raw=true)
+
+When you load a track, the number of cues will be displayed if there
+are any, otherwise nothing gets displayed.
+
+![Cue recorded](/assets/record.png?raw=true)
+
+![Cue removed](/assets/remove.png?raw=true)
+
+![Cue recorded](/assets/seek.png?raw=true)
+
+You may then record cues, seek to them and delete them.
+
 ### Adding & removing hot cues
 
-### Keyboard
-* <kbd>N</kbd> to record hot cue N (eg. 1) when it doesn't exist, or skip to it when it does
+#### Keyboard
+* <kbd>N</kbd> will record hot cue N (eg. 1) when it doesn't exist, or skip to it when it does
 * <kbd>Shit</kbd> + <kbd>N</kbd> to remove hot cue N
 
-### Mouse
-There are 4 circles at the top of the Spotify player indiciating the
-current status of all cues (off = no cue, on = existing cue).
+#### Mouse
 
 * <kbd>Click</kbd> on cue N to record or go to cue
 * <kbd>Shift</kbd> + <kbd>Click</kbd> to remove hot cue N
