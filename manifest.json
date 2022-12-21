@@ -1,0 +1,11 @@
+{
+  "name": "spicetify-hot-cues",
+  "description": "DJ hot cues for Spotify",
+  "preview": "assets/preview.png",
+  "main": "dist/hot-cues.js",
+  "readme": "README.md",
+  "authors": [
+      { "name": "graymatter", "url": "https://github.com/graymatter" }
+  ],
+  "tags": ["dj", "cues"]
+}
