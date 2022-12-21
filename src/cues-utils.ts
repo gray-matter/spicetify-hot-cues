@@ -31,7 +31,7 @@ export function msToReadableTime(ms: number): string {
     return `${+minutes < 10 ? "0" : ""}${minutes}:${+seconds < 10 ? "0" : ""}${seconds}`
 }
 
-export function isValidCue(cue: number) {
+export function isValidCue(cue: number | undefined) {
     return cue != null && cue >= 0;
 }
 

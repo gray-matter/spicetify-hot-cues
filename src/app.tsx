@@ -31,7 +31,7 @@ function generateCuesButtons(cueColors: string[],
   for (let i = 0; i < 4; ++i) {
     cueButtons[i] = new Spicetify.Topbar.Button(
         "Cue #" + i,
-        generateButton(cueColors[i], undefined),
+        generateButton(cueColors[i], -1),
         callback(i)
     );
   }
@@ -39,17 +39,18 @@ function generateCuesButtons(cueColors: string[],
   return cueButtons;
 }
 
-function updateCueState(cueButton: Spicetify.Topbar.Button, color: string, timecode: number): void {
+function updateCueState(cueButton: Spicetify.Topbar.Button, color: string, timecode: number | undefined): void {
   cueButton.icon = generateButton(color, timecode);
 }
 
-function generateButton(color: string, timecode: number): string {
+function generateButton(color: string, timecode: number | undefined): string {
   const validTimeCue = isValidCue(timecode);
   let result = `
     <svg viewBox="0 0 100 100">
         <circle cx=50 cy=50 r="50" fill="${color}" fill-opacity="${validTimeCue ? 0.9 : 0.2}"/>`;
 
-  if (validTimeCue) {
+  // timecode cannot be null since this is checked by isValidCue, but this creates types errors otherwise
+  if (timecode != null && validTimeCue) {
     result += `
             <text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle"
                   font-size="x-large" font-weight="bold">
@@ -69,14 +70,17 @@ function updateCurrentSong(allCues: SongCues): SongCue | undefined
 
   if (data) {
     const currentSong = data.track?.uri!
-    const currentCues = getOrCreateCue(allCues, currentSong);
-    const nbCuesForSong = countCues(currentCues.cues);
 
-    if (nbCuesForSong > 0) {
-      Spicetify.showNotification("ℹ️ Found " + nbCuesForSong + " clues for this track");
+    if (currentSong) {
+      const currentCues = getOrCreateCue(allCues, currentSong);
+      const nbCuesForSong = countCues(currentCues.cues);
+
+      if (nbCuesForSong > 0) {
+        Spicetify.showNotification("ℹ️ Found " + nbCuesForSong + " clues for this track");
+      }
+
+      return currentCues;
     }
-
-    return currentCues;
   }
 
   return undefined;
