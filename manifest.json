@@ -1,5 +1,5 @@
 {
-  "name": "spicetify-hot-cues",
+  "name": "DJ Hot Cues",
   "description": "DJ hot cues for Spotify",
   "preview": "assets/preview.png",
   "main": "dist/hot-cues.js",
