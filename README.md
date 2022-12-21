@@ -49,3 +49,5 @@ You may then record cues, seek to them and delete them.
 
 When the user seeks to a certain position by hand, seeking with hot cues doesn't move the song cursor straightaway.
 When the song gets played again, it is at the right position though.
+
+[![Github Stars](https://img.shields.io/github/stars/gray-matter/spicetify-hot-cues?logo=github&style=social)](https://github.com/gray-matter/spicetify-hot-cues)
