@@ -66,21 +66,17 @@ function generateButton(color: string, timecode: number | undefined): string {
 
 function updateCurrentSong(allCues: SongCues): SongCue | undefined
 {
-  const data = Spicetify.Player.data || Spicetify.Queue;
+  const currentTrack = Spicetify.Player.data?.item || Spicetify.Queue.track?.contextTrack;
 
-  if (data) {
-    const currentSong = data.track?.uri!
+  if (currentTrack) {
+    const currentCues = getOrCreateCue(allCues, currentTrack.uri);
+    const nbCuesForSong = countCues(currentCues.cues);
 
-    if (currentSong) {
-      const currentCues = getOrCreateCue(allCues, currentSong);
-      const nbCuesForSong = countCues(currentCues.cues);
-
-      if (nbCuesForSong > 0) {
-        Spicetify.showNotification("ℹ️ Found " + nbCuesForSong + " clues for this track");
-      }
-
-      return currentCues;
+    if (nbCuesForSong > 0) {
+      Spicetify.showNotification("ℹ️ Found " + nbCuesForSong + " clues for this track");
     }
+
+    return currentCues;
   }
 
   return undefined;
